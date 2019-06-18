@@ -75,14 +75,10 @@ public class ApplicationUserController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String loginUser(){
-        return "redirect:/myprofile";
-    }
-
     @GetMapping("/myprofile")
     public String getProfilePage(Principal p, Model model){
-        model.addAttribute("user", p);
+        ApplicationUser user = (ApplicationUser) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        model.addAttribute("user", user);
         return "userDetail";
     }
 
