@@ -1,0 +1,20 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Page</title>
+</head>
+<body>
+<h1>Welcome, <span th:text="${user.username}"></span> </h1>
+<span>First Name: </span>
+<p th:text="${user.firstname}"></p>
+<br>
+<br>
+<span>Birthday: </span>
+<p th:text="${user.dateOfBirth}"></p>
+<br>
+<span>Bio: </span>
+
+<p th:text="${user.bio}"></p>
+<br>
+
+</body>
+</html>
