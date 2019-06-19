@@ -23,6 +23,8 @@ public class PostController {
 
     @GetMapping("/posts/add")
     public String getPostForm(Principal p, Model  model){
+        String princeipal = p == null ? "" : p.getName();
+        model.addAttribute("principal", princeipal);
         return "postForm";
     }
 

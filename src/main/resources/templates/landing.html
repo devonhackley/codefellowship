@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Landing</title>
 </head>
 <body>
+<div th:replace="fragments/header :: header">...</div>
 <h1>This is the landing page!</h1>
 <p>Welcome to codefellowship, it is a site that allows people learning to code to connect with each other and support each other on their coding journeys. </p>
-<a href="/signup">Sign up</a>
-<a href="/login">Login</a>
 </body>
 </html>

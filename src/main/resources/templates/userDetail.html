@@ -3,7 +3,7 @@
     <title>User Page</title>
 </head>
 <body>
-<a href="/logout">Logout</a>
+<div th:replace="fragments/header :: header">...</div>
 <h1>Welcome, <span th:text="${user.username}"></span> </h1>
 <span>First Name: </span>
 <p th:text="${user.firstname}"></p>
