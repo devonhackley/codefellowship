@@ -4,7 +4,6 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
-<h1>Welcome, <span th:text="${user.username}"></span> </h1>
 <span>First Name: </span>
 <p th:text="${user.firstname}"></p>
 <br>
@@ -29,7 +28,10 @@
     </li>
 </ul>
 
-<a href="/posts/add">Create a Post</a>
+<span th:if="${principal == ''}"></span>
+<span th:unless="${principal == ''}">
+       <a href="/posts/add">Create a Post</a>
+</span>
 
 </body>
 </html>

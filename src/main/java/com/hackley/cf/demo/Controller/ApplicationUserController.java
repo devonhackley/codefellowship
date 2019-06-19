@@ -74,12 +74,14 @@ public class ApplicationUserController {
     }
 
     @GetMapping("/users/{id}")
-    public String getUsersPage(@PathVariable long id, Model model){
+    public String getUsersPage(@PathVariable long id, Model model, Principal p){
         ApplicationUser user = applicationUserRepository.findById(id).get();
         List<Post> posts = postRepository.findByCreatorId(user.getId());
         model.addAttribute("user", user);
         model.addAttribute("posts", posts);
-        model.addAttribute("principal", user.getUsername());
+
+        String princeipal = p == null ? "" : p.getName();
+        model.addAttribute("principal", princeipal);
         return "userDetail";
     }
 
@@ -96,7 +98,9 @@ public class ApplicationUserController {
         List<Post> posts = postRepository.findByCreatorId(user.getId());
         model.addAttribute("user", user);
         model.addAttribute("posts", posts);
-        model.addAttribute("principal", user.getUsername());
+
+        String princeipal = p == null ? "" : p.getName();
+        model.addAttribute("principal", princeipal);
         return "userDetail";
     }
 
