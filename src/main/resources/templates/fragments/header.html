@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<header class="header" th:fragment="header">
+    <h1>Welcome </h1>
+    <nav>
+        <span></span><a href="/">Home</a></span>
+        <span th:if="${principal == ''}">
+            <a href="/login">Log In</a>
+        </span>
+        <span th:unless="${principal == ''}">
+            <a href="/myprofile">My Profile</a>
+            <a href="/logout">Log out</a>
+        </span>
+        <a href="/logout">Log out</a>
+    </nav>
+</header>
+</html>

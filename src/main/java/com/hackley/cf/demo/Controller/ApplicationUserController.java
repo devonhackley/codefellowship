@@ -1,7 +1,9 @@
 package com.hackley.cf.demo.Controller;
 
 import com.hackley.cf.demo.Model.ApplicationUser;
+import com.hackley.cf.demo.Model.Post;
 import com.hackley.cf.demo.Repository.ApplicationUserRepository;
+import com.hackley.cf.demo.Repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 public class ApplicationUserController {
@@ -25,15 +28,22 @@ public class ApplicationUserController {
     ApplicationUserRepository applicationUserRepository;
 
     @Autowired
+    PostRepository postRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @GetMapping("/")
-    public String getLandingPage(){
+    public String getLandingPage(Principal p, Model model){
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        model.addAttribute("principal", user);
         return "landing";
     }
 
     @GetMapping("/signup")
-    public String getSignUpPage(){
+    public String getSignUpPage(Principal p, Model model){
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        model.addAttribute("principal", user);
         return "signup";
     }
 
@@ -66,19 +76,27 @@ public class ApplicationUserController {
     @GetMapping("/users/{id}")
     public String getUsersPage(@PathVariable long id, Model model){
         ApplicationUser user = applicationUserRepository.findById(id).get();
+        List<Post> posts = postRepository.findByCreatorId(user.getId());
         model.addAttribute("user", user);
+        model.addAttribute("posts", posts);
+        model.addAttribute("principal", user);
         return "userDetail";
     }
 
     @GetMapping("/login")
-    public String getLoginPage(){
+    public String getLoginPage(Principal p, Model model){
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        model.addAttribute("principal", user);
         return "login";
     }
 
     @GetMapping("/myprofile")
     public String getProfilePage(Principal p, Model model){
-        ApplicationUser user = (ApplicationUser) ((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+        List<Post> posts = postRepository.findByCreatorId(user.getId());
         model.addAttribute("user", user);
+        model.addAttribute("posts", posts);
+        model.addAttribute("principal", user);
         return "userDetail";
     }
 
