@@ -4,9 +4,9 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
-<img src="https://media.giphy.com/media/jaQuaJ8clDC1i/giphy.gif" alt="profile-pic" width="150" height="150">
 <br>
-<span>First Name: </span>
+<img src="https://media.giphy.com/media/jaQuaJ8clDC1i/giphy.gif" alt="profile-pic" width="250" height="250">
+<br>
 <p th:text="${user.firstname}"></p>
 <form method="POST" th:action="'/users/' + ${user.id} + '/follow'" >
     <button type="submit">Follow</button>
