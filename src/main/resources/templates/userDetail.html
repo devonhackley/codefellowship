@@ -4,9 +4,13 @@
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
+<img src="https://media.giphy.com/media/jaQuaJ8clDC1i/giphy.gif" alt="profile-pic" width="150" height="150">
+<br>
 <span>First Name: </span>
 <p th:text="${user.firstname}"></p>
-<br>
+<form method="POST" th:action="'/users/' + ${user.id} + '/follow'" >
+    <button type="submit">Follow</button>
+</form>
 <br>
 <span>Birthday: </span>
 <p th:text="${user.dateOfBirth}"></p>
@@ -15,23 +19,22 @@
 
 <p th:text="${user.bio}"></p>
 <br>
+<section>
+    <h3>Followers: </h3>
+    <div th:replace="fragments/follow :: followList(users=${user.followers})"></div>
 
-<h3>Your posts: </h3>
-<ul>
-    <li th:each="post : ${posts}">
-    <span>Body: </span>
-    <span th:text="${post.body}"></span>
-    <br>
-    <span>Created at: </span>
-    <span th:text="${post.createdAt}"></span>
-    <br>
-    </li>
-</ul>
+    <h3>Following: </h3>
+    <div th:replace="fragments/follow :: followList(users=${user.following})"></div>
+</section>
 
-<span th:if="${principal == ''}"></span>
-<span th:unless="${principal == ''}">
+<h3>Posts: </h3>
+<div th:replace="fragments/post :: postList(posts=${posts})"></div>
+
+<span th:if="${principal == user.username}"></span>
+<span th:unless="${principal != user.username}">
        <a href="/posts/add">Create a Post</a>
 </span>
+
 
 </body>
 </html>

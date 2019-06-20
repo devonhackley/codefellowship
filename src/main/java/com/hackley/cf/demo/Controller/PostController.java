@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.security.Principal;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 public class PostController {
@@ -42,4 +44,16 @@ public class PostController {
         return new RedirectView("/myprofile");
 
     }
+
+    @GetMapping("/feed")
+    public String getFeed(Principal p, Model model){
+         ApplicationUser user = applicationUserRepository.findByUsername(p.getName());
+         Set<ApplicationUser> following = user.getFollowing();
+         List<Post> posts = postRepository.findByCreatorIn(following);
+        String princeipal = p == null ? "" : p.getName();
+        model.addAttribute("principal", princeipal);
+        model.addAttribute("posts", posts);
+        return "feed";
+
+     }
 }
