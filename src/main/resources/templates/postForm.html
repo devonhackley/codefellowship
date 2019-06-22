@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeFellowShip</title>
+</head>
+<body>
+<div th:replace="fragments/header :: header">...</div>
+    <h2>Create a post</h2>
+        <form action="/posts" method="POST">
+            Message: <textarea name="body"></textarea>
+            <input type="submit" />
+        </form>
+</body>
+</html>
