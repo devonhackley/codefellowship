@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Landing</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link href="/reset.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
-<h1>This is the landing page!</h1>
-<p>Welcome to codefellowship, it is a site that allows people learning to code to connect with each other and support each other on their coding journeys. </p>
+<div class="container">
+    <h1 class="display-4 text-center heading">Welcome to Codefellowship!</h1>
+<!--    <div class="row">-->
+        <div class="landing-column col-sm">
+            <p class="landing-text text-center">Connect with other aspiring <span class="special">Developers</span>.</p>
+            <img src="https://media.glassdoor.com/l/52/ac/f9/8a/coding-together.jpg" alt="coding friends"  class="rounded mx-auto d-block" width="380" />
+        </div>
+        <div class="landing-column col-sm">
+            <p class="landing-text text-center">Support each other on your coding <span class="special">Journeys</span>.</p>
+            <img src="https://getvoip.com/uploads/shutterstock_305434532-750x500.jpg" alt="coding support" class="rounded mx-auto d-block" width="380"/>
+        </div>
+        <div class="landing-column col-sm">
+            <p class="landing-text text-center">Start by signing up <a href="/signup">now.</a></p>
+            <img src="https://www.nojitter.com/sites/default/files/software-devs.jpg" alt="sign up" width="380" class="rounded mx-auto d-block" />
+        </div>
+<!--    </div>-->
+</div>
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>

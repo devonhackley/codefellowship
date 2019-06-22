@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>My feed</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link href="/reset.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<div th:replace="fragments/header :: header">...</div>
     <h2>My Social Feed</h2>
     <section>
         <div th:replace="fragments/post :: postList"></div>
     </section>
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>

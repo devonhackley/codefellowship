@@ -1,17 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Log in to Codefellowship</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="/style.css" rel="stylesheet" type="text/css" />
+    <link href="/reset.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div th:replace="fragments/header :: header">...</div>
-<h1>Log in</h1>
-<form action="/login" method="POST">
-    <p>Username: <input name="username" /></p>
-    <p>Password: <input type="password" name="password" /></p>
-    <input type="submit" />
-</form>
-
+<h1 class="display-4 text-center heading">Log in</h1>
+<div class="container form" id="login-form">
+    <form action="/login" method="POST">
+        <div class="form-group">
+            <label for="username">Username: </label>
+            <input class="form-control" type="text" name="username" id="username"/>
+        </div>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input class="form-control" type="password" name="password" id="password" />
+        </div>
+        <input type="submit" class="btn btn-primary" />
+    </form>
+</div>
+<div th:replace="fragments/footer :: footer">...</div>
 </body>
 </html>
