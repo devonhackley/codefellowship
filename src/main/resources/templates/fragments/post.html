@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<body>
+<ul th:fragment="postList">
+    <li th:each="post : ${posts}">
+        <span th:if="${principal != post.creator.username}"></span>
+        <span th:unless="${principal == post.creator.username}">
+            <a th:href="@{'/users/' + ${post.creator.id}}"><span th:text="${post.creator.username}"></span></a>
+            <br>
+       </span>
+
+        <span>Body: </span>
+        <span th:text="${post.body}"></span>
+        <br>
+        <span>Created at: </span>
+        <span th:text="${post.createdAt}"></span>
+        <br>
+    </li>
+</ul>
+<br>
+</body>
+</html>

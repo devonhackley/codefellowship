@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class ApplicationUser implements UserDetails {
@@ -27,6 +28,24 @@ public class ApplicationUser implements UserDetails {
 
     @OneToMany(mappedBy = "creator")
     private List<Post> posts;
+
+    @ManyToMany
+    Set<ApplicationUser> following;
+
+    @ManyToMany
+    Set<ApplicationUser> followers;
+
+    public Set<ApplicationUser> getFollowers() {
+        return followers;
+    }
+
+    public Set<ApplicationUser> getFollowing() {
+        return following;
+    }
+
+    public void setFollowing(Set<ApplicationUser> following) {
+        this.following = following;
+    }
 
     public List<Post> getPosts() {
         return posts;

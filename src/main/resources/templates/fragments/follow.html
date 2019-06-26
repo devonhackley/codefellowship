@@ -1,0 +1,11 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <body>
+    <ul th:fragment="followList(users)">
+        <li th:each="user : ${users}">
+            <span th:text="${user.username}"></span>
+            <br>
+        </li>
+    </ul>
+    <br>
+    </body>
+</html>
